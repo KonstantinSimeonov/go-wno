@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"sync"
 )
 
 func insertionSort(xs []int, l, r int) {
@@ -63,8 +64,21 @@ func mergesort(xs []int, l, r int) {
 	}
 
 	mid := (l + r) / 2
-	mergesort(xs, l, mid)
-	mergesort(xs, mid, r)
+	if r - l > 1000 {
+		var wg sync.WaitGroup
+		wg.Add(1)
+
+		go func() {
+			defer wg.Done()
+			mergesort(xs, l, mid)
+		}()
+		mergesort(xs, mid, r)
+		wg.Wait()
+	} else {
+		mergesort(xs, mid, r)
+		mergesort(xs, l, mid)
+	}
+
 	merge(xs, l, r)
 }
 
