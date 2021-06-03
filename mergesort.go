@@ -4,6 +4,24 @@ import (
 	"fmt"
 )
 
+func insertionSort(xs []int, l, r int) {
+	for i := 1; i < len(xs); i++ {
+		x := xs[i]
+		j := 0
+		for xs[j] < x && j < i {
+			j++
+		}
+
+		k := i
+		for j < k {
+			xs[k] = xs[k - 1]
+			k--
+		}
+
+		xs[j] = x
+	}
+}
+
 func merge(xs []int, l, r int) {
 	mid := (l + r) / 2
 	left := make([]int, mid - l)
@@ -39,7 +57,8 @@ func merge(xs []int, l, r int) {
 
 // in place
 func mergesort(xs []int, l, r int) {
-	if r - l < 2 {
+	if r - l < 10 {
+		insertionSort(xs, l, r)
 		return
 	}
 
@@ -81,7 +100,7 @@ func MergesortSlices(xs []int) []int {
 }
 
 func main() {
-	xs := []int{10,9,8,7,11,12,4,3,3}
+	xs := []int{10,9,8,7,11,12,4,3,3, 99, 102, 88, 33, 69, 42, 101, 304, 404, 505, 500}
 	mergesort(xs, 0, len(xs))
 	fmt.Println(xs)
 
