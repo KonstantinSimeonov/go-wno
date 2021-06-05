@@ -75,6 +75,16 @@ func main() {
 			max_children = mc
 		case "--format":
 			format = os.Args[i + 1]
+		case "--help":
+			fmt.Println(`Generate trees in json format
+  --help                      Show ze help
+  --fib                       Generate a fibonacci tree
+  --depth [INT]               The depth of the tree
+  --max-children [INT]        Limits how many children a non-fibonacci tree could have
+  --format [json|json-array]  Output the tree in one of the following formats:
+      json        type Node = { value: number, children: Node[] }
+      json-array  type Node = [number, Node[]]`)
+			return
 		default:
 		}
 	}
