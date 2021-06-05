@@ -48,9 +48,11 @@ func GenTree(r *rand.Rand, depth, max_children, d int) Node {
 
 func ToJsonArray(n *Node) string {
 	result := "[" + strconv.Itoa(n.Value) + ", ["
-	for _, c := range n.Children {
+	for i, c := range n.Children {
 		result += ToJsonArray(&c)
-		result += ", "
+		if i < len(n.Children) - 1 {
+			result += ", "
+		}
 	}
 	result += "]]"
 
