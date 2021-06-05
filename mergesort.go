@@ -15,7 +15,7 @@ func insertionSort(xs []int, l, r int) {
 
 		k := i
 		for j < k {
-			xs[k] = xs[k - 1]
+			xs[k] = xs[k-1]
 			k--
 		}
 
@@ -25,8 +25,8 @@ func insertionSort(xs []int, l, r int) {
 
 func merge(xs []int, l, r int) {
 	mid := (l + r) / 2
-	left := make([]int, mid - l)
-	right := make([]int, r - mid)
+	left := make([]int, mid-l)
+	right := make([]int, r-mid)
 	copy(left, xs[l:mid])
 	copy(right, xs[mid:r])
 
@@ -58,13 +58,13 @@ func merge(xs []int, l, r int) {
 
 // in place
 func mergesort(xs []int, l, r int) {
-	if r - l < 10 {
+	if r-l < 10 {
 		insertionSort(xs, l, r)
 		return
 	}
 
 	mid := (l + r) / 2
-	if r - l > 1000 {
+	if r-l > 1000 {
 		var wg sync.WaitGroup
 		wg.Add(1)
 
@@ -92,7 +92,7 @@ func MergesortSlices(xs []int) []int {
 	left := MergesortSlices(xs[:mid])
 	right := MergesortSlices(xs[mid:])
 
-	result := make([]int, len(left) + len(right))
+	result := make([]int, len(left)+len(right))
 	for i, l, r := 0, 0, 0; i < len(result); i++ {
 		switch {
 		case l < len(left) && r >= len(right):
@@ -114,11 +114,11 @@ func MergesortSlices(xs []int) []int {
 }
 
 func main() {
-	xs := []int{10,9,8,7,11,12,4,3,3, 99, 102, 88, 33, 69, 42, 101, 304, 404, 505, 500}
+	xs := []int{10, 9, 8, 7, 11, 12, 4, 3, 3, 99, 102, 88, 33, 69, 42, 101, 304, 404, 505, 500}
 	mergesort(xs, 0, len(xs))
 	fmt.Println(xs)
 
-	xs2 := []int{10,9,8,7,11,12,4,3,3}
+	xs2 := []int{10, 9, 8, 7, 11, 12, 4, 3, 3}
 	fmt.Println(xs2)
 	fmt.Println(MergesortSlices(xs2))
 }

@@ -1,11 +1,11 @@
 package main
 
 import (
-	"fmt"
 	"bufio"
+	"fmt"
 	"os"
-	"strings"
 	"strconv"
+	"strings"
 )
 
 func ReadNums(reader *bufio.Reader) []int {
@@ -28,10 +28,10 @@ func main() {
 	var diff = 0
 	for i := 0; i < n; i++ {
 		r := ReadNums(reader)
-		diff += r[i] - r[n - i - 1]
+		diff += r[i] - r[n-i-1]
 	}
 
-	if (diff < 0) {
+	if diff < 0 {
 		diff = -diff
 	}
 

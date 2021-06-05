@@ -6,24 +6,24 @@ import (
 
 type Node struct {
 	Value int
-	Next *Node
+	Next  *Node
 }
 
 type List struct {
-	Head *Node
-	Tail *Node
+	Head   *Node
+	Tail   *Node
 	Length int
 }
 
-func (xs *List) Iter () <-chan int {
+func (xs *List) Iter() <-chan int {
 	ch := make(chan int)
-	go func () {
+	go func() {
 		for x := xs.Head; x != nil; x = x.Next {
 			ch <- x.Value
 		}
 
 		close(ch)
-	} ();
+	}()
 	return ch
 }
 
@@ -32,7 +32,7 @@ func NewList() List {
 }
 
 func l_append_one(l *List, x int) {
-	tail := &Node{x,nil}
+	tail := &Node{x, nil}
 	l.Length++
 
 	if l.Head == nil {
@@ -50,7 +50,7 @@ func AppendMany(l *List, xs ...int) {
 	}
 
 	for i := 1; i < len(xs); i++ {
-		l.Tail.Next = &Node{xs[i],nil}
+		l.Tail.Next = &Node{xs[i], nil}
 		l.Tail = l.Tail.Next
 		l.Length++
 	}

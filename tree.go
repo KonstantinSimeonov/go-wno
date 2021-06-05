@@ -2,8 +2,8 @@ package main
 
 import (
 	"fmt"
-	"os"
 	"log"
+	"os"
 	"path/filepath"
 )
 
@@ -19,7 +19,7 @@ func PrintDir(dir, indent string) {
 	for _, f := range file_list {
 		if f.IsDir() {
 			fmt.Println(indent + f.Name() + "/")
-			PrintDir(filepath.Join(dir, f.Name()), indent + "  ")
+			PrintDir(filepath.Join(dir, f.Name()), indent+"  ")
 		} else {
 			fmt.Println(indent + f.Name())
 		}
@@ -27,5 +27,5 @@ func PrintDir(dir, indent string) {
 }
 
 func main() {
-	PrintDir(os.Args[len(os.Args) - 1], "")
+	PrintDir(os.Args[len(os.Args)-1], "")
 }

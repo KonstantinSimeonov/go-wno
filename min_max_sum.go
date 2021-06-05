@@ -1,12 +1,12 @@
 package main
 
 import (
-	"fmt"
 	"bufio"
+	"fmt"
 	"os"
-	"strings"
-	"strconv"
 	"sort"
+	"strconv"
+	"strings"
 )
 
 func main() {
@@ -25,7 +25,7 @@ func main() {
 	maxsum := 0
 	for i := 0; i < 4; i++ {
 		minsum += nums[i]
-		maxsum += nums[4 - i]
+		maxsum += nums[4-i]
 	}
 
 	fmt.Printf("%d %d\n", minsum, maxsum)

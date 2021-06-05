@@ -1,16 +1,16 @@
 package main
 
 import (
-	"fmt"
 	"bufio"
+	"fmt"
 	"os"
-	"strings"
 	"strconv"
+	"strings"
 )
 
 func main() {
 	reader := bufio.NewReader(os.Stdin)
-	
+
 	reader.ReadString('\n')
 	line, _ := reader.ReadString('\n')
 	var sum = int64(0)
