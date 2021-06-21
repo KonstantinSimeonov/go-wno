@@ -117,6 +117,7 @@ func debug_table(a, b string, table [][]int) {
 	}
 }
 
+// nobody cares but still https://www.hackerrank.com/challenges/common-child/problem
 func main() {
 	r := bufio.NewReader(os.Stdin)
 
