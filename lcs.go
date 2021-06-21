@@ -59,11 +59,7 @@ func lcs(a, b string) [][]int {
 // rotates 2 rows instead of using a whole table
 // uses 2 * len(b) memory, but doesn't allow backtracking
 func lcs_rotate(a, b string) int {
-	table := make([][]int, 2)
-
-	for i, _ := range table {
-		table[i] = make([]int, len(b)+1)
-	}
+	table := [2][5001]int{}
 
 	i := 1
 	for ; i <= len(a); i++ {
